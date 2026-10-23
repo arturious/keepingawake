@@ -1,5 +1,5 @@
-APP = keepingawake.app
-BIN = $(APP)/Contents/MacOS/keepingawake
+APP = KeepingAwake.app
+BIN = $(APP)/Contents/MacOS/KeepingAwake
 RES = $(APP)/Contents/Resources
 SUDOERS = /etc/sudoers.d/keepingawake
 
@@ -25,7 +25,7 @@ sudoers:
 	rm -f $$f
 
 uninstall:
-	-pkill -x keepingawake
+	-pkill -x KeepingAwake
 	rm -rf /Applications/$(APP)
 	sudo pmset -a disablesleep 0
 	sudo rm -f $(SUDOERS)

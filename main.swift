@@ -1,4 +1,4 @@
-// keepingawake — menu bar toggle that keeps the Mac awake, even with the lid closed.
+// KeepingAwake — menu bar toggle that keeps the Mac awake, even with the lid closed.
 import AppKit
 import IOKit.pwr_mgt
 import ServiceManagement
@@ -14,7 +14,7 @@ final class IdleSleepBlocker {
         for type in [kIOPMAssertionTypePreventUserIdleDisplaySleep, kIOPMAssertionTypePreventUserIdleSystemSleep] {
             var id: IOPMAssertionID = 0
             if IOPMAssertionCreateWithName(type as CFString, IOPMAssertionLevel(kIOPMAssertionLevelOn),
-                                           "keepingawake" as CFString, &id) == kIOReturnSuccess {
+                                           "KeepingAwake" as CFString, &id) == kIOReturnSuccess {
                 ids.append(id)
             }
         }
@@ -51,7 +51,7 @@ enum LidSleep {
             && /usr/bin/install -m 0440 -o root -g wheel "$f" /etc/sudoers.d/keepingawake; rc=$?; rm -f "$f"; exit $rc
             """
         let escaped = shell.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")
-        let source = "do shell script \"\(escaped)\" with prompt \"keepingawake wants to allow disabling sleep with the lid closed.\" with administrator privileges"
+        let source = "do shell script \"\(escaped)\" with prompt \"KeepingAwake wants to allow disabling sleep with the lid closed.\" with administrator privileges"
 
         var error: NSDictionary?
         NSAppleScript(source: source)?.executeAndReturnError(&error)
@@ -122,8 +122,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func render() {
         statusItem.button?.image = active ? activeIcon : inactiveIcon
         statusItem.button?.toolTip = active
-            ? "keepingawake: sleep disabled (lid closed too)"
-            : "keepingawake: off"
+            ? "KeepingAwake: sleep disabled (lid closed too)"
+            : "KeepingAwake: off"
     }
 
     private func showMenu() {

@@ -1,8 +1,8 @@
 # keepingawake
 
-A tiny macOS menu bar app that keeps your Mac awake, **even with the lid closed**.
+**KeepingAwake** is a tiny macOS menu bar app that keeps your Mac awake, **even with the lid closed**.
 
-Inspired by [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake), which prevents idle sleep but cannot stop the Mac from sleeping when you close the lid. keepingawake does both.
+Inspired by [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake), which prevents idle sleep but cannot stop the Mac from sleeping when you close the lid. KeepingAwake does both.
 
 - Native Swift + AppKit, a single source file
 - ~16 MB of memory, no CPU while idle
@@ -35,7 +35,7 @@ pmset -a disablesleep 1   # on
 pmset -a disablesleep 0   # off
 ```
 
-This setting requires root. On first activation, keepingawake shows the standard macOS administrator password dialog once and installs a sudoers rule at `/etc/sudoers.d/keepingawake`:
+This setting requires root. On first activation, KeepingAwake shows the standard macOS administrator password dialog once and installs a sudoers rule at `/etc/sudoers.d/keepingawake`:
 
 ```
 <user> ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 0, /usr/bin/pmset -a disablesleep 1
@@ -49,7 +49,7 @@ Requires macOS 14+ and Xcode, which provides `actool` to compile the app icon.
 
 ```sh
 make install      # build and copy to /Applications
-open /Applications/keepingawake.app
+open /Applications/KeepingAwake.app
 ```
 
 Other targets:
